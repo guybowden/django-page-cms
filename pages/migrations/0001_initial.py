@@ -54,13 +54,13 @@ class Migration:
         db.send_create_signal('pages', ['PageAlias'])
         
         # Adding model 'PagePermission'
-        db.create_table('pages_pagepermission', (
-            ('id', orm['pages.PagePermission:id']),
-            ('page', orm['pages.PagePermission:page']),
-            ('user', orm['pages.PagePermission:user']),
-            ('type', orm['pages.PagePermission:type']),
-        ))
-        db.send_create_signal('pages', ['PagePermission'])
+        #db.create_table('pages_pagepermission', (
+        #    ('id', orm['pages.PagePermission:id']),
+        #    ('page', orm['pages.PagePermission:page']),
+        #    ('user', orm['pages.PagePermission:user']),
+        #    ('type', orm['pages.PagePermission:type']),
+        #))
+        #db.send_create_signal('pages', ['PagePermission'])
         
         if settings.PAGE_USE_SITE_ID:
             # Adding ManyToManyField 'Page.sites'
@@ -84,7 +84,7 @@ class Migration:
         db.delete_table('pages_pagealias')
         
         # Deleting model 'PagePermission'
-        db.delete_table('pages_pagepermission')
+        #db.delete_table('pages_pagepermission')
         
         if settings.PAGE_USE_SITE_ID:
             # Dropping ManyToManyField 'Page.sites'
@@ -163,12 +163,12 @@ class Migration:
             'page': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['pages.Page']", 'null': 'True', 'blank': 'True'}),
             'url': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '255'})
         },
-        'pages.pagepermission': {
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'page': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['pages.Page']", 'null': 'True', 'blank': 'True'}),
-            'type': ('django.db.models.fields.IntegerField', [], {'default': '0'}),
-            'user': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['auth.User']"})
-        },
+        #'pages.pagepermission': {
+        #    'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+        #    'page': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['pages.Page']", 'null': 'True', 'blank': 'True'}),
+        #    'type': ('django.db.models.fields.IntegerField', [], {'default': '0'}),
+        #    'user': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['auth.User']"})
+        #},
         'sites.site': {
             'Meta': {'db_table': "'django_site'"},
             'domain': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
